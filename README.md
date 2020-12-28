@@ -1,29 +1,27 @@
-go-pushover
-===========
+# gpushover
 
 Go wrapper for the Pushover API.
 
-Example
-=======
+# Example
 
 ```go
 package main
 
 import (
-    "github.com/jdiez17/go-pushover"
+    gp "go.gridfinity.dev/gpushover"
     "fmt"
     "time"
 )
 
 func main() {
-    p := pushover.Pushover{
-        "", /* User key (use your own)*/
-        "", /* Application key (use your own) */
+    p := gp.Pushover{
+        "......", /* User key */
+        "......", /* Application key */
     }
 
-    n := pushover.Notification {
-        Title: "go-pushover",
-        Message: "Hello from Go!",
+    n := gp.Notification {
+        Title: "gpushover",
+        Message: "Hello from gpushover!",
         Timestamp: time.Now(),
         Priority: 2,
         Retry: 30,
@@ -33,7 +31,7 @@ func main() {
     response, err := p.Notify(n)
 
     if err != nil {
-        if err != pushover.PushoverError {
+        if err != gp.PushoverError {
             panic(err)
         } else {
             fmt.Println(err)

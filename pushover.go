@@ -1,7 +1,7 @@
-package pushover
+package gpushover // import "go.gridfinity.dev/gpushover"
 
 import (
-	"encoding/json"
+	json "github.com/json-iterator/go"
 	"errors"
 	"fmt"
 	"io/ioutil"
@@ -12,9 +12,9 @@ import (
 
 const endpoint string = "https://api.pushover.net/1/messages.json"
 
-var PushoverError = errors.New("PushoverError")
+var PError = errors.New("PError")
 
-type Pushover struct {
+type P struct {
 	UserKey, AppKey string
 	Client          *http.Client
 }
@@ -31,7 +31,7 @@ type Notification struct {
 	Priority, Retry, Expire int
 }
 
-func (n Notification) toValues(p Pushover) url.Values {
+func (n Notification) toValues(p P) url.Values {
 	return url.Values{
 		"user":      {p.UserKey},
 		"token":     {p.AppKey},
@@ -49,7 +49,7 @@ func (n Notification) toValues(p Pushover) url.Values {
 	}
 }
 
-func (p Pushover) Notify(n Notification) (*Response, error) {
+func (p P) Notify(n Notification) (*Response, error) {
 
 	client := p.Client
 	if client == nil {
@@ -77,5 +77,5 @@ func (p Pushover) Notify(n Notification) (*Response, error) {
 	if err != nil {
 		return nil, err
 	}
-	return response, PushoverError
+	return response, PError
 }
