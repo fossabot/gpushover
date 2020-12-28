@@ -1,13 +1,14 @@
 package gpushover // import "go.gridfinity.dev/gpushover"
 
 import (
-	json "github.com/json-iterator/go"
 	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"time"
+
+	json "github.com/json-iterator/go"
 )
 
 const endpoint string = "https://api.pushover.net/1/messages.json"
@@ -27,8 +28,8 @@ type Response struct {
 
 type Notification struct {
 	Message, Title, Url, UrlTitle, Sound, Device, Callback string
-	Timestamp time.Time
-	Priority, Retry, Expire int
+	Timestamp                                              time.Time
+	Priority, Retry, Expire                                int
 }
 
 func (n Notification) toValues(p P) url.Values {
@@ -50,14 +51,12 @@ func (n Notification) toValues(p P) url.Values {
 }
 
 func (p P) Notify(n Notification) (*Response, error) {
-
 	client := p.Client
 	if client == nil {
 		client = http.DefaultClient
 	}
 
 	resp, err := client.PostForm(endpoint, n.toValues(p))
-
 	if err != nil {
 		return nil, err
 	}
