@@ -48,35 +48,35 @@ import (
 
 func main() {
     p := gp.Pushover{
-        "......", /* User key */
-        "......", /* Application key */
+        "......",  /* User key */
+        "......",  /* Application key */
     }
 
     n := gp.Notification {
-        Title:  "gpushover",
-        Message: "Hello from gpushover!",
+        Title:     "gpushover",
+        Message:   "Hello from gpushover!",
         Timestamp: time.Now(),
         Priority:  2,
-        Retry:   30,
-        Expire:  90,
+        Retry:     30,
+        Expire:    90,
     }
 
     response, err := p.Notify(
- 								n,
-							 )
+                              n,
+                             )
 
     if err != nil {
         if err != gp.PushoverError {
-            panic(
-				   err,
-		    )
+                                     panic(
+                                            err,
+                                          )
         } else {
             fmt.Println(
-						   err,
-					   )
+                        err,
+                       )
             fmt.Println(
-						   response,
-   					   )
+                        response,
+                       )
         }
     }
 }
