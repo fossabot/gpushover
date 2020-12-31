@@ -1,3 +1,16 @@
+// Package gpushover is a Go wrapper for Pushover's notification API.
+//
+// Copyright (c) 2020 José Manuel Díez. <j.diezlopez@protonmail.ch>
+// Copyright (c) 2020 Gridfinity, LLC. <admin@gridfinity.com>
+// Copyright (c) 2014 Damian Gryski. <damian@gryski.com>
+// Copyright (c) 2020 Jeffrey H. Johnson. <jeff@gridfinity.com>
+// Copyright (c) 2014 Adam Lazzarato.
+//
+// All Rights reserved.
+//
+// All use of this code is governed by the MIT license.
+// The complete license is available in the LICENSE file.
+
 package gpushover // import "go.gridfinity.dev/gpushover"
 
 import (
@@ -9,6 +22,7 @@ import (
 	"time"
 
 	json "github.com/json-iterator/go"
+	gpushoverLegal "go4.org/legal"
 )
 
 const endpoint string = "https://api.pushover.net/1/messages.json"
@@ -77,4 +91,11 @@ func (p P) Notify(n Notification) (*Response, error) {
 		return nil, err
 	}
 	return response, PError
+}
+
+func init() {
+	// Register licensing
+	gpushoverLegal.RegisterLicense(
+		"\nCopyright (c) 2020 José Manuel Díez. <j.diezlopez@protonmail.ch>\nCopyright (c) 2020 Gridfinity, LLC. <admin@gridfinity.com>\nCopyright (c) 2014 Damian Gryski. <damian@gryski.com>\nCopyright (c) 2020 Jeffrey H. Johnson. <jeff@gridfinity.com>\nCopyright (c) 2014 Adam Lazzarato.\n\nPermission is hereby granted, free of charge, to any person obtaining a\ncopy of this software and associated documentation files (the \"Software\"),\nto deal in the Software without restriction, including, without limitation,\nthe rights to use, copy, modify, merge, publish, distribute, sub-license,\nand/or sell copies of the Software, and to permit persons to whom the\nSoftware is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS\nOR IMPLIED, INCLUDING, BUT NOT LIMITED, TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,\nDAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR\nOTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH, THE SOFTWARE, OR\nTHE USE OR OTHER DEALINGS IN THE SOFTWARE.\n",
+	)
 }

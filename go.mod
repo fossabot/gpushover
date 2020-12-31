@@ -10,6 +10,7 @@ require (
 	github.com/modern-go/reflect2 v1.0.2-0.20200602030031-7e6ae53ffa0b // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/stretchr/testify v1.6.2-0.20201103103935-92707c0b2d50 // indirect
+	go4.org v0.0.0-20201209231011-d4a079459e60 // indirect
 	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776 // indirect
 )
