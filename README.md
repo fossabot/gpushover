@@ -62,21 +62,21 @@ func main() {
     }
 
     response, err := p.Notify(
- n,
- )
+ 								n,
+							 )
 
     if err != nil {
         if err != gp.PushoverError {
             panic(
-   err,
-   )
+				   err,
+		    )
         } else {
             fmt.Println(
-   err,
-   )
+						   err,
+					   )
             fmt.Println(
-   response,
-   )
+						   response,
+   					   )
         }
     }
 }
